@@ -21,4 +21,4 @@ functions:
           path: getMarketData/{proxy+}
     environment:
       MARKET_DATA_URL: https://sandbox.iexapis.com/stable/{{proxy}}?token={{token}}
-      MARKET_DATA_TOKEN: ${env:MARKET_DATA_TOKEN, ssm:apiToken}
+      MARKET_DATA_TOKEN: ${env:MARKET_DATA_TOKEN}
