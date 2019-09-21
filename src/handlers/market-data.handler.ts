@@ -1,11 +1,9 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
-import 'source-map-support/register';
 import * as https from 'https';
+import { Response, Request, Router } from 'express';
 
-export const getMarketData: APIGatewayProxyHandler = async (event, _context) => {
-    
-    console.info(`Processing request : ${JSON.stringify(event)}`);
-    
+const marketDataRouteHandler = Router();
+
+marketDataRouteHandler.all('/*', async (req: Request, res: Response) => {
     try {
 
         //Check required environment variables
@@ -13,19 +11,17 @@ export const getMarketData: APIGatewayProxyHandler = async (event, _context) => 
         if(!process.env.MARKET_DATA_TOKEN) throw new Error(`Missing environment variable: MARKET_DATA_TOKEN`)
         
         let url = process.env.MARKET_DATA_URL
-            .replace('{{proxy}}', event.pathParameters.proxy)
+            .replace('{{proxy}}', req.url.replace('/v1.0/',''))
             .replace('{{token}}', process.env.MARKET_DATA_TOKEN);
-        
-        return await getExternalData(url);
 
+        const data = await getExternalData(url);
+
+        res.send(data);
+        
     } catch(err) {
-        console.error(err);
-        return {
-            statusCode: 500,
-            body: `Error processing request`
-        };
+        res.status(500).send(err.message);
     }
-}
+});
 
 const getExternalData = (url: string) => new Promise<any>((resolve, reject) => {
     https.get(url, (res) => {
@@ -42,3 +38,5 @@ const getExternalData = (url: string) => new Promise<any>((resolve, reject) => {
         reject(err)
     });
 });
+
+export { marketDataRouteHandler, getExternalData };
