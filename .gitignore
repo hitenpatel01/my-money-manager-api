@@ -11,3 +11,4 @@ lib
 
 # Local files
 .env
+.dynamodb

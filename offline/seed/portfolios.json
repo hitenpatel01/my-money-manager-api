@@ -1,0 +1,17 @@
+[
+    {
+        "id": "1", 
+        "stocks": [
+            {
+                "symbol": "MSFT",
+                "qty": 100
+            },{
+                "symbol": "GOOG",
+                "qty": 500
+            },{
+                "symbol": "AAPL",
+                "qty": 25
+            }
+        ]
+    }
+]

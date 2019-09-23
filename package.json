@@ -4,7 +4,7 @@
   "description": "My Money Manager API",
   "main": "handler.js",
   "scripts": {
-    "start": "sls offline",
+    "start": "sls offline start",
     "test": "ts-node node_modules/jasmine/bin/jasmine --config=jasmine.json",
     "deploy": "sls deploy",
     "remove": "sls remove"
@@ -21,10 +21,13 @@
     "@types/jasmine": "^3.4.0",
     "@types/node": "^10.12.18",
     "@types/supertest": "^2.0.8",
+    "@types/uuid": "^3.4.5",
+    "aws-sdk": "^2.533.0",
     "dotenv": "^8.0.0",
     "jasmine": "^3.4.0",
     "nock": "^11.3.4",
     "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-dynamodb-local": "^0.2.38",
     "serverless-offline": "^5.7.3",
     "serverless-webpack": "^5.2.0",
     "supertest": "^4.0.2",
