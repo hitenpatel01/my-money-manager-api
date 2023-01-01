@@ -31,10 +31,10 @@
     "serverless-offline": "^5.7.3",
     "serverless-webpack": "^5.2.0",
     "supertest": "^4.0.2",
-    "ts-loader": "^5.3.3",
+    "ts-loader": "^9.4.2",
     "ts-node": "^8.4.1",
     "typescript": "^3.2.4",
-    "webpack": "^4.29.0"
+    "webpack": "^5.75.0"
   },
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT"
